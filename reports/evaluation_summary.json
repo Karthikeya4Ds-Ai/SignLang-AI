@@ -1,0 +1,16 @@
+{
+  "model_file": "sign_classifier_model.keras",
+  "test_samples": 470,
+  "num_classes": 47,
+  "overall_accuracy": 0.9425531914893617,
+  "category_accuracy": {
+    "digits_0_to_9": 0.85,
+    "alphabet_A_to_Z": 0.9807692307692307,
+    "dynamic_gestures": 0.9363636363636364
+  },
+  "benchmarks": {
+    "mean_latency_ms": 17.877434999977595,
+    "p95_latency_ms": 22.401150000405323,
+    "throughput_fps": 55.93643607157588
+  }
+}

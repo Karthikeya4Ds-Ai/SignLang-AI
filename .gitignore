@@ -1,0 +1,65 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# IDE & OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Heavy Datasets & Uncompressed Raw Array Dumps (>100MB exceeds GitHub push limits)
+*.npy
+*.npz
+data/raw/
+data/processed/*.npz
+SignLang_Ai/SignLang_Data_Dynamic/
+SignLang_Data_Dynamic/
+SignLang_Ai_Data/
+SignLang_Ai/Project_Files/*.npy
+
+# Model Checkpoints & Temporary Runs
+*.h5
+checkpoints/
+reports/logs/
+events.out.tfevents.*
+
+# Keep the production models and report visualizations
+!models/sign_classifier_model.keras
+!reports/*.png
+!reports/*.json
+!reports/*.txt

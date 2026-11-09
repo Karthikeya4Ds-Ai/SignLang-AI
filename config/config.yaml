@@ -1,0 +1,115 @@
+# SignLang AI Configuration
+# Centralized settings for vision, modeling, NLP, TTS, and application runtime
+
+system:
+  project_name: "SignLang AI"
+  version: "2.0.0"
+  random_seed: 42
+
+data:
+  # Path relative to repository root
+  raw_data_dir: "SignLang_Ai/SignLang_Data_Dynamic"
+  processed_dir: "data/processed"
+  sequence_length: 60
+  test_split_ratio: 0.20
+  stratify: true
+
+classes:
+  static_numbers:
+    - '0'
+    - '1'
+    - '2'
+    - '3'
+    - '4'
+    - '5'
+    - '6'
+    - '7'
+    - '8'
+    - '9'
+  static_alphabet:
+    - 'A'
+    - 'B'
+    - 'C'
+    - 'D'
+    - 'E'
+    - 'F'
+    - 'G'
+    - 'H'
+    - 'I'
+    - 'J'
+    - 'K'
+    - 'L'
+    - 'M'
+    - 'N'
+    - 'O'
+    - 'P'
+    - 'Q'
+    - 'R'
+    - 'S'
+    - 'T'
+    - 'U'
+    - 'V'
+    - 'W'
+    - 'X'
+    - 'Y'
+    - 'Z'
+  dynamic_gestures:
+    - 'Hello'
+    - 'Goodbye'
+    - 'Thanks'
+    - 'Please'
+    - 'Yes'
+    - 'No'
+    - 'Food'
+    - 'Water'
+    - 'Help'
+    - 'Stop'
+  special_tokens:
+    idle: '_idle_'
+    space: 'Goodbye'  # Gesture that can explicitly act as space if needed
+
+features:
+  landmarks_per_hand: 21
+  coords_per_landmark: 3  # (x, y, z)
+  num_hands: 2            # Left and Right
+  feature_dim: 126        # 21 * 3 * 2
+  use_wrist_relative: true
+  use_scale_normalization: true
+
+model:
+  default_architecture: "gru"  # 'gru', 'lstm', 'bilstm'
+  input_shape: [60, 126]
+  saved_model_path: "models/sign_classifier_model.keras"
+  tflite_model_path: "models/sign_classifier.tflite"
+  training:
+    epochs: 100
+    batch_size: 32
+    learning_rate: 0.0001
+    early_stopping_patience: 20
+    dropout_rate: 0.20
+
+inference:
+  camera_index: 0
+  frame_width: 1280
+  frame_height: 720
+  flip_horizontal: true
+  min_detection_confidence: 0.50
+  min_tracking_confidence: 0.50
+  confidence_threshold: 0.75
+  debounce_window: 10
+  consensus_ratio: 0.70
+
+nlp:
+  fingerspelling_mode: true
+  auto_space_on_idle: true
+  idle_duration_for_space_seconds: 1.8
+  max_sentence_length: 100
+
+tts:
+  enabled: true
+  voice_index: 0
+  rate: 155
+  volume: 1.0
+  speak_individual_letters: false
+  speak_dynamic_words: true
+  speak_completed_sentence: true
